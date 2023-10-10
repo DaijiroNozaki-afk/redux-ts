@@ -11,6 +11,7 @@ const List = () => {
           <tr>
             <th>ID</th>
             <th>Name</th>
+            <th>Age</th>
           </tr>
         </thead>
         <tbody>
@@ -18,6 +19,7 @@ const List = () => {
             <tr key={person.id}>
               <td>{person.id}</td>
               <td>{person.name}</td>
+              <td>{person.age}</td>
             </tr>
           ))}
         </tbody>

@@ -4,24 +4,23 @@ import { addPerson } from '../store/features/personSlice';
 
 const Add = () => {
   const name = useRef<string>('');
+  const age = useRef<number>(0);
   const dispatch = useAddDispatch();
   const handleSubmit = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    dispatch(addPerson({ name: name.current }));
+    dispatch(addPerson({ name: name.current, age: age.current }));
   };
   return (
-    <form className="border rounded-md p-2 shadow-md m-2">
+    <form>
       <label htmlFor="">Person Name:</label>
+      <input onChange={(e) => (name.current = e.target.value)} />
       <input
-        className="border rounded-md p-2 mx-2"
-        onChange={(e) => (name.current = e.target.value)}
+        type="number"
+        placeholder="年齢"
+        pattern="^[0-9]+$"
+        onChange={(e) => (age.current = parseInt(e.target.value))}
       />
-      <button
-        onClick={handleSubmit}
-        className="bg-violet-500 text-white rounded-md px-4 py-2 cursor-pointer hover:bg-violet-600 active: bg-violet-700"
-      >
-        Add
-      </button>
+      <button onClick={handleSubmit}>Add</button>
     </form>
   );
 };
